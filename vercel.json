@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "framework": "nextjs",
+  "functions": {
+    "pages/api/analyze.ts": {
+      "maxDuration": 60
+    },
+    "pages/api/process.ts": {
+      "maxDuration": 300,
+      "memory": 3008
+    }
+  },
+  "env": {
+    "ANTHROPIC_API_KEY": "@anthropic_api_key",
+    "RAPIDAPI_KEY": "@rapidapi_key"
+  },
+  "headers": [
+    {
+      "source": "/clips/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "attachment"
+        }
+      ]
+    }
+  ]
+}
